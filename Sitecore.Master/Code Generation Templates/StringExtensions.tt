@@ -53,6 +53,12 @@ public static string AsClassName(string word)
     return GetFormattedWord(word, TitleCase);
 }
 
+public static string AsStructName(string word)
+{
+    // TitleCase the word
+    return GetFormattedWord(word, TitleCase);
+}
+
 public static string AsPropertyName(string word, bool pluralize = false)
 {
     // TitleCase the word and pluralize it

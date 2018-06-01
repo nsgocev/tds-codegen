@@ -1,0 +1,57 @@
+﻿<#@ template language="C#" #>
+<#@ output encoding="utf-8"#>
+
+<#@ include file="Helpers.tt" #>
+<#@ include file="StringExtensions.tt" #>
+<#@ include file="GeneralExtensions.tt" #>
+<#@ include file="Inflector.tt" #>
+
+<#@ assembly name="System.Core.dll" #>
+
+<#@ import namespace="System" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="HedgehogDevelopment.SitecoreProject.VSIP.CodeGeneration.Models" #>
+
+<#@ parameter name="Model" type="HedgehogDevelopment.SitecoreProject.VSIP.CodeGeneration.Models.SitecoreItem" #>
+<#@ parameter name="DefaultNamespace" type="System.String" #>
+
+<#
+/*
+This TDS Code Generation template is used to generate objects that are compatible with the
+Habitat Example Project based on the Helix Architecture Principles available @ https://github.com/Sitecore/Habitat
+*/
+#>
+
+<#
+// we only act on Templates
+SitecoreTemplate template = Model as SitecoreTemplate;
+if (template == null)
+{
+	return "";
+}
+
+string Tool = "Team Development for Sitecore - HelixItem.tt";
+string ToolVersion = "1.0";
+#>
+
+namespace <#= GetNamespace(DefaultNamespace, template)#>
+{
+	public struct <#= AsStructName(template.Name) #>
+	{
+		public const string TemplateIdString = "<#= template.ID.ToString() #>";
+		public static readonly ID TemplateId = new ID(TemplateIdString);
+		public const string TemplateName = "<#= template.Name #>";
+	  
+		public struct Fields
+		{
+			<#foreach(SitecoreField field in GetFieldsForTemplate(template, true)){#>
+				
+				public static readonly ID <#= GetPropertyName(field) #> = new ID("<#=field.ID.ToString()#>");
+				public const string <#= GetPropertyName(field) #>FieldName = "<#=field.Name#>";
+				
+			<#}#>	
+		}
+	}	
+}

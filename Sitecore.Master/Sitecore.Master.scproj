@@ -26,8 +26,8 @@
     <CodeGenFile>Documentation.md</CodeGenFile>
     <CodeGenTargetProject>SampleLibrary</CodeGenTargetProject>
     <BaseNamespace>BaseNamespace</BaseNamespace>
-    <HeaderTransformFile>MDDocHeader.tt</HeaderTransformFile>
-    <BaseTransformFile>MDDocItem.tt</BaseTransformFile>
+    <HeaderTransformFile>mddocheader.tt</HeaderTransformFile>
+    <BaseTransformFile>mddocitem.tt</BaseTransformFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -646,27 +646,29 @@
     <ExcludedAssemblies Include="Sitecore.%2a.dll" />
   </ItemGroup>
   <ItemGroup>
-    <CodeGenTemplate Include="Code Generation Templates\GeneralExtensions.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\GlassV3Header.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\GlassV3Item.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\glassv4header.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\glassv4item.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\Inflector.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\MDDocHeader.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\MDDocItem.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\GlassHeader.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\GlassItem.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\Helpers.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\ItemPaths.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\StringExtensions.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\VelirItem.tt" />
-    <CodeGenTemplate Include="Code Generation Templates\VelirHeader.tt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\UI\UI.csproj">
       <Project>{3fffc16d-eacd-452f-975e-9f48c4a95c6d}</Project>
       <Name>UI</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" />
+  <ItemGroup>
+    <CodeGenTemplate Include="Code Generation Templates\generalextensions.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\glassheader.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\glassitem.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\glassv3header.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\glassv3item.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\glassv4header.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\glassv4item.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\helixheader.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\helixitem.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\helpers.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\inflector.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\itempaths.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\mddocheader.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\mddocitem.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\stringextensions.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\velirheader.tt" />
+    <CodeGenTemplate Include="Code Generation Templates\veliritem.tt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
 </Project>

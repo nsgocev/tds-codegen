@@ -176,3 +176,4 @@ BuiltFiles_*.txt
 lib/*.dll
 SampleLibrary/Documentation.md
 SampleLibrary/TdsT4CodeGeneratedFile.cs
+/.vs/CodeGeneration/v15/Server/sqlite3
